@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}View All Users{% endblock %} {% block
+search %}{% endblock %} {% block content %} {% for item in values %}
+<p>Username: {{ item.username }}</p>
+<p>Password: {{ item.password }}</p>
+<p>Profile: {{ item.image }}</p>
+<p>Bio: {{ item.bio }}</p>
+<hr />
+<!-- Adding a horizontal line for clarity between users -->
+{% endfor %} {% for item in values2 %}
+<p>Followee ID: {{ item.followee_id }}</p>
+<p>Follower ID: {{ item.follower_id }}</p>
+<p>Pending: {{ item.is_pending }}</p>
+<p>Friend: {{ item.is_friend }}</p>
+<hr />
+<!-- Adding a horizontal line for clarity between followers -->
+{% endfor %} {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %} Follows {% endblock %} {% block
+search %}{% endblock %} {% block content %} {% for item in requested %} {% if
+item.follower and item.is_pending %} {% set follower_user =
+Users.query.filter_by(id=item.follower.id).first() %} {% if follower_user %}
+<form id="followForm_{{ item.id }}" action="{{ url_for('follows') }}" method="post">
+  <div class="card" id="card_{{ item.id }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ follower_user.username }}</h5>
+      <button type="submit" class="btn btn-primary" name="action" value="accept">
+        Accept
+      </button>
+      <button type="submit" class="btn btn-primary" name="action" value="decline">
+        Decline
+      </button>
+      <input type="hidden" name="id" value="{{ item.id }}" />
+    </div>
+  </div>
+</form>
+{% endif %} {% endif %} {% endfor %}
+
+<script>
+  function hideCard(itemId) {
+    var cardId = "card_" + itemId;
+    var cardElement = document.getElementById(cardId);
+    if (cardElement) {
+      cardElement.style.display = "none";
+    }
+  }
+</script>
+
+{% endblock %}

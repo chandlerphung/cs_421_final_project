@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %} Post {% endblock %} {% block search
+%}{% endblock %} {% block content %}
+<form action="{{ url_for('post') }}" method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="caption" class="form-label">Caption</label>
+    <textarea name="caption" class="form-control" id="caption" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <label for="file" class="form-label">Upload Image</label>
+    <input type="file" class="form-control" id="file" name="file" />
+  </div>
+  <button type="submit" class="btn btn-outline-success">Post</button>
+</form>
+{% endblock %}
